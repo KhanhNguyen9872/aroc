@@ -219,7 +219,7 @@ download_supersu() {
 echo "Downloading SuperSU-v2.82-SR3"
 mkdir -p /tmp/aroc
 cd /tmp/aroc
-curl https://github.com/KhanhNguyen9872/aroc/blob/master/SR3-SuperSU-v2.82-SR3-20170813133244.zip?raw=true -o SuperSU.zip
+curl -L --max-redirs 15 https://github.com/KhanhNguyen9872/aroc/blob/master/SR3-SuperSU-v2.82-SR3-20170813133244.zip?raw=true -o SuperSU.zip
 
 # Check filesize
 
@@ -230,7 +230,7 @@ if [ $supersu_size = 6918737 ]; then
   /usr/local/bin/busybox unzip SuperSU.zip
   else
   echo "Unexpected file size. Trying again..."
-  curl https://github.com/KhanhNguyen9872/aroc/blob/master/SR3-SuperSU-v2.82-SR3-20170813133244.zip?raw=true -o SuperSU.zip
+  curl -L --max-redirs 15 https://github.com/KhanhNguyen9872/aroc/blob/master/SR3-SuperSU-v2.82-SR3-20170813133244.zip?raw=true -o SuperSU.zip
 fi
 
 # Check filesize again...
