@@ -189,12 +189,12 @@ if [ ! -e /usr/local/bin/busybox ]; then
    curl https://busybox.net/downloads/binaries/1.26.2-defconfig-multiarch/busybox-armv6l -o busybox
   else
   
-   if [ ANDROID_ARCH=x86 ]; then
+   if [ $ANDROID_ARCH=x86 ]; then
 
 # Commenting out the x64 Intel version for now as most x64 systems still seem to use a 32 bit Android container.
 # So if we use the 32 bit BusyBox here, copying it to Android should also work on all machines.
-#     curl https://busybox.net/downloads/binaries/1.26.2-defconfig-multiarch/busybox-x86_64 -o busybox
-     curl https://busybox.net/downloads/binaries/1.26.2-defconfig-multiarch/busybox-i686 -o busybox
+     curl https://busybox.net/downloads/binaries/1.26.2-defconfig-multiarch/busybox-x86_64 -o busybox
+#     curl https://busybox.net/downloads/binaries/1.26.2-defconfig-multiarch/busybox-i686 -o busybox
 
     else
      echo "Error!"
@@ -219,7 +219,7 @@ download_supersu() {
 echo "Downloading SuperSU-v2.82-SR3"
 mkdir -p /tmp/aroc
 cd /tmp/aroc
-curl https://download.chainfire.eu/1122/SuperSU/SR3-SuperSU-v2.82-SR3-20170813133244.zip?retrieve_file=1 -o SuperSU.zip
+curl https://github.com/KhanhNguyen9872/aroc/blob/master/SR3-SuperSU-v2.82-SR3-20170813133244.zip?raw=true -o SuperSU.zip
 
 # Check filesize
 
@@ -230,7 +230,7 @@ if [ $supersu_size = 6918737 ]; then
   /usr/local/bin/busybox unzip SuperSU.zip
   else
   echo "Unexpected file size. Trying again..."
-  curl https://download.chainfire.eu/1122/SuperSU/SR3-SuperSU-v2.82-SR3-20170813133244.zip?retrieve_file=1 -o SuperSU.zip
+  curl https://github.com/KhanhNguyen9872/aroc/blob/master/SR3-SuperSU-v2.82-SR3-20170813133244.zip?raw=true -o SuperSU.zip
 fi
 
 # Check filesize again...
